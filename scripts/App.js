@@ -7,8 +7,10 @@ const icon = document.querySelector('.icon img')
 
 
 const updateUI = data =>{
-    const cityDets = data.cityDets
-    const weather = data.weather
+   
+   //  const cityDets = data.cityDets
+   //  const weather = data.weather
+    const {weather, cityDets } = data
 
     // update details templete
 
@@ -21,13 +23,16 @@ const updateUI = data =>{
     </div>
     `
  // updating the day/night & icon images
-    let timesrc = null
- if (weather.IsDayTime){
-    timesrc = '../img/day.svg'
+const iconSrc =`img/icons/${weather.WeatherIcon}.svg`
+icon.setAttribute('src', iconSrc)
 
- } else {
-    timesrc = '../img/night.svg'
- }
+    let timesrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg'
+//  if (weather.IsDayTime){
+//     timesrc = 'img/day.svg'
+
+//  } else {
+//     timesrc = 'img/night.svg'
+//  }
  time.setAttribute('src', timesrc)
 
     if (card.classList.contains('d-none')){
